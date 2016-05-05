@@ -12,4 +12,5 @@ var now = moment();
 
 var timeStamp = 1462476006941;
 var timestampMoment = moment.utc(timeStamp);
+timestampMoment.local();
 console.log(timestampMoment.format('h:mm a'));
