@@ -1,6 +1,6 @@
 // Get time using moment
 // Add timestap to message in UTC but display in local
-// var now = moment();
+
 var socket = io();
 
 socket.on('connect', function(){
@@ -8,8 +8,13 @@ socket.on('connect', function(){
 });
 
 socket.on('message', function(message){
+    var now = moment();
+    var timestampMoment = moment.utc(now.format());
+    timestampMoment.local();
+    message.time = timestampMoment.format('h:mm ss a');
     console.log('New Message:');
     console.log(message.text);
+    console.log(message.time);
     jQuery('.messages').append('<p>' + message.time + ' '+ message.text + '<p>');
 });
 
