@@ -1,4 +1,8 @@
 var socket = io();
+var name = getQueryVariable('name');
+var room = getQueryVariable('room');
+
+console.log(name + ' wants to join ' + room);
 
 socket.on('connect', function(){
   console.log('Connected to Socket.io server !');
